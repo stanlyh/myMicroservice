@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlobUpload")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88a8587c4d8e0dbce0fca02dc803f87c730e62d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlobUpload")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlobUpload")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
