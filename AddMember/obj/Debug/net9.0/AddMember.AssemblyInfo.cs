@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AddMember")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88a8587c4d8e0dbce0fca02dc803f87c730e62d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f8230eaeb559730d0dff474ece184a2f3924f42")]
 [assembly: System.Reflection.AssemblyProductAttribute("AddMember")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AddMember")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
