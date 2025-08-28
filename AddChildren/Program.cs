@@ -1,24 +1,20 @@
-using Microsoft.EntityFrameworkCore;
-using AddChildren.Data;
-using AddChildren.Models;
+using AddChildren;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using static AddChildren.Data.ServiceBus;
 
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddEndpointsApiExplorer();
+IServiceCollection serviceDescriptors = new ServiceCollection();
 
-builder.Services.AddDbContext<DataContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
-var app = builder.Build();
-
-
-app.MapPost("Add/Child", async (DataContext context, Child item) =>
-{
-    context.Children.Add(item);
-    await context.SaveChangesAsync();   
-    return Results.Ok();
-})
-.WithName("AddChild");
-
-app.Run();
+Host.CreateDefaultBuilder(args)
+   .ConfigureHostConfiguration(configHost =>
+   {
+       configHost.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).Build();
+   })
+   .ConfigureServices((hostContext, services) =>
+   {
+       IConfiguration configuration = hostContext.Configuration;
+       services.AddOptions();
+       services.AddHostedService<Worker>();
+       services.AddSingleton<ISubscriptionReceiver, SubscriptionReceiver>();
+   }).Build().Run();

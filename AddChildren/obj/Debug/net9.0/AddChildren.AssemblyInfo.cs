@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AddChildren")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88a8587c4d8e0dbce0fca02dc803f87c730e62d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abb6bce4007a18a49d6d037a35611d6953b8a1f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("AddChildren")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AddChildren")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

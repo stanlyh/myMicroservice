@@ -1,24 +1,20 @@
-using Microsoft.EntityFrameworkCore;
-using AddAdult.Data;
-using AddAdult.Models;
+﻿using AddAdult;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using static AddAdult.Data.ServiceBus;
 
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddEndpointsApiExplorer();
+IServiceCollection serviceDescriptors = new ServiceCollection();
 
-builder.Services.AddDbContext<DataContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
-var app = builder.Build();
-
-
-app.MapPost("Add/Adult", async (DataContext context, Adult item) =>
-{
-    context.Adults.Add(item);
-    await context.SaveChangesAsync();   
-    return Results.Ok();
-})
-.WithName("AddAdult");
-
-app.Run();
+Host.CreateDefaultBuilder(args)
+   .ConfigureHostConfiguration(configHost =>
+   {
+       configHost.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true).Build();
+   })
+   .ConfigureServices((hostContext, services) =>
+   {
+       IConfiguration configuration = hostContext.Configuration;
+       services.AddOptions();
+       services.AddHostedService<Worker>();
+       services.AddSingleton<ISubscriptionReceiver, SubscriptionReceiver>();
+   }).Build().Run();
